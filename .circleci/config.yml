@@ -25,12 +25,10 @@ jobs:
     docker:
       - image: cimg/node:18.18.0
     steps:
-      - checkout
-      - node/install-packages:
-          pkg-manager: npm
       - run:
-          name: Deploy to production
-          command: echo "Em um cenário real, aqui teríamos os comandos para deploy"
+          name: Trigger deploy on Render
+          command: |
+            curl -X POST "$RENDER_DEPLOY_HOOK"
 
 workflows:
   version: 2
